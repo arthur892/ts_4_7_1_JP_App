@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ts_4_7_1_jpp_app/landing_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,7 +13,7 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       home: Scaffold(
         body: Center(
-          child: Text('Hello World!'),
+          child: LandingScreen(),
         ),
       ),
     );
