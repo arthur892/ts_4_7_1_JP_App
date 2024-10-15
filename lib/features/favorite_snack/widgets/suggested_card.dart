@@ -9,7 +9,7 @@ import 'package:ts_4_7_1_jpp_app/shared/widgets.dart';
 class SuggestedCard extends StatelessWidget {
   const SuggestedCard({super.key, required this.item});
   final ShoppingItem item;
-  //static const double degrees2Radians = math.pi / 180;
+  static const double degrees2Radians = math.pi / 180;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class SuggestedCard extends StatelessWidget {
         children: [
           //Hintergrundbild
           ClipRRect(
-            borderRadius: BorderRadius.only(topRight: Radius.circular(26)),
+            //borderRadius: BorderRadius.only(topRight: Radius.circular(26)),
             child: Container(
               height: 250,
               width: 380,
@@ -36,18 +36,20 @@ class SuggestedCard extends StatelessWidget {
               ),
             ),
           ),
-          // Transform(
-          //   alignment: FractionalOffset.center,
-          //   transform: Matrix4.identity()
-          //     ..setEntry(3, 2, 0.001)
-          //     ..rotateY(-degrees2Radians * 60)
-          //   //..rotateZ(0.5)
-          //   //..rotateX(degrees2Radians * -15)
-          //   ,
-          //   child: Container(
-          //     height: 150,
-          //     width: 300,
-          //     color: Colors.green,
+          // Positioned(
+          //   child: Transform(
+          //     alignment: FractionalOffset.center,
+          //     transform: Matrix4.identity()
+          //       ..setEntry(3, 2, 0.001)
+          //       ..rotateY(-degrees2Radians * 60)
+          //     //..rotateZ(0.5)
+          //     //..rotateX(degrees2Radians * -15)
+          //     ,
+          //     child: Container(
+          //       height: 250,
+          //       width: 380,
+          //       color: Colors.green,
+          //     ),
           //   ),
           // ),
           //Inhalt + Button

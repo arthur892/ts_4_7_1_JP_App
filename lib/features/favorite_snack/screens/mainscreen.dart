@@ -26,19 +26,24 @@ class _MainscreenState extends State<Mainscreen> {
               fit: BoxFit.cover,
             ),
           ),
-          Buttonsheet(item: widget.shoppingRepo.getItem(1))
-          // Positioned(
-          //     top: 200,
-          //     child: Row(
-          //       children: [SuggestedCard(item: widget.shoppingRepo.getItem(1))],
-          //     )),
-          // Positioned(
-          //     top: 564,
-          //     child: Row(
-          //       children: [
-          //         RecommenedCard(item: widget.shoppingRepo.getItem(0))
-          //       ],
-          //     ))
+          //Buttonsheet(item: widget.shoppingRepo.getItem(1)),
+          Positioned(
+              top: 200,
+              child: Row(
+                children: [SuggestedCard(item: widget.shoppingRepo.getItem(1))],
+              )),
+          Positioned(
+              top: 564,
+              child: GestureDetector(
+                onTap: () => showModalBottomSheet(
+                    backgroundColor: Colors.transparent,
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Buttonsheet(item: shoppingItem);
+                    }),
+                child: RecommenedCard(item: shoppingItem),
+              ))
         ],
       ),
     );

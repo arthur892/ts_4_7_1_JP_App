@@ -4,39 +4,67 @@ import 'package:flutter/material.dart';
 import 'package:ts_4_7_1_jpp_app/features/favorite_snack/models/shopping_item.dart';
 import 'package:ts_4_7_1_jpp_app/shared/widgets.dart';
 
-class Buttonsheet extends StatefulWidget {
+const double maxWidth = 380;
+
+class Buttonsheet extends StatelessWidget {
   const Buttonsheet({super.key, required this.item});
   final ShoppingItem item;
 
   @override
-  State<Buttonsheet> createState() => _ButtonsheetState();
-}
-
-class _ButtonsheetState extends State<Buttonsheet> {
-  @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.center,
       children: [
+        Positioned(
+            top: 120,
+            child: Container(
+              decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [
+                      Color(0xFF2F2B22),
+                      //Color(0xFF2F2B22),
+                      Color(0xFF354343)
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: [0.60, 1],
+                  ),
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(8)),
+              height: 800,
+              width: 420,
+              //color: Colors.black,
+            )),
         Positioned(
           top: 0,
           child: Container(
-            color: Colors.green,
+            //height: 200,
+            width: 320,
+
+            //color: Colors.green,
             child: Image.asset(
-              widget.item.path,
+              item.path,
               fit: BoxFit.cover,
             ),
           ),
         ),
+
         Positioned(
-            top: 250,
-            child: DetailsCard(
-              item: widget.item,
+            top: 312,
+            child: Column(
+              children: [
+                DetailsCard(
+                  item: item,
+                ),
+                SizedBox(height: 40),
+                OrderCard(item: item)
+              ],
             )),
-        Positioned(
-            top: 600,
-            child: OrderCard(
-              item: widget.item,
-            ))
+        // Positioned(
+        //     top: 600,
+        //     child: OrderCard(
+        //       item: item,
+        //     ))
       ],
     );
   }
@@ -50,7 +78,7 @@ class DetailsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       //height: 400,
-      width: 380,
+      width: maxWidth,
       //color: Colors.red,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
@@ -82,7 +110,7 @@ class DetailsCard extends StatelessWidget {
                   Text(
                     textAlign: TextAlign.center,
                     item.descriptionLong,
-                    style: Theme.of(context).textTheme.bodyLarge,
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   const SizedBox(
                     height: 28,
@@ -178,51 +206,103 @@ class _OrderCardState extends State<OrderCard> {
     return Column(
       children: [
         Container(
-          //decoration: BoxDecoration(color: Colors.amber),
-          child: SegmentedButton(
-              style: SegmentedButton.styleFrom(
-                  backgroundColor: Color(0xFF414544),
-                  foregroundColor: Color(0xFF636366),
-                  //textStyle: Theme.of(context).textTheme.bodyMedium,
-                  selectedBackgroundColor: Color(0xFF636366),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+          width: maxWidth,
+          child: Row(
+            children: [
+              SegmentedButton(
+                  style: SegmentedButton.styleFrom(
+                      backgroundColor: Color(0xFF414544),
+                      foregroundColor: Color(0xFF636366),
+                      //textStyle: Theme.of(context).textTheme.bodyMedium,
+                      selectedBackgroundColor: Color(0xFF636366),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      padding: EdgeInsets.all(0)),
+                  showSelectedIcon: false,
+                  segments: <ButtonSegment<String>>[
+                    ButtonSegment<String>(
+                        value: _options[0],
+                        label: Text(
+                          _options[0],
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        )),
+                    ButtonSegment<String>(
+                        value: _options[1],
+                        label: Text(
+                          _options[1],
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        )),
+                    ButtonSegment<String>(
+                        value: _options[2],
+                        label: Text(
+                          _options[2],
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ))
+                  ],
+                  selected: <String>{_selectedSize},
+                  onSelectionChanged: (Set<String> newSelection) {
+                    setState(() {
+                      _selectedSize = newSelection.first;
+                      print(_selectedSize);
+                    });
+                  }),
+              Expanded(child: Text("")),
+              Row(
+                children: [
+                  IconButton(
+                      iconSize: 20,
+                      onPressed: () => null,
+                      //color: Colors.white70,
+                      style: IconButton.styleFrom(
+                        shape: const CircleBorder(
+                            side: BorderSide(
+                          color: Colors.white70,
+                          width: 1,
+                        )),
+                        backgroundColor: Color(0xFF3C423D),
+                      ),
+                      icon: const Icon(
+                        Icons.remove,
+                        color: Colors.white70,
+                      )),
+                  Container(
+                    width: 40,
+                    child: Center(
+                        child: Text(
+                      "1",
+                      style: Theme.of(context).textTheme.titleLarge,
+                    )),
                   ),
-                  padding: EdgeInsets.all(0)),
-              showSelectedIcon: false,
-              segments: <ButtonSegment<String>>[
-                ButtonSegment<String>(
-                    value: _options[0],
-                    label: Text(
-                      _options[0],
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    )),
-                ButtonSegment<String>(
-                    value: _options[1],
-                    label: Text(
-                      _options[1],
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    )),
-                ButtonSegment<String>(
-                    value: _options[2],
-                    label: Text(
-                      _options[2],
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ))
-              ],
-              selected: <String>{_selectedSize},
-              onSelectionChanged: (Set<String> newSelection) {
-                setState(() {
-                  _selectedSize = newSelection.first;
-                  print(_selectedSize);
-                });
-              }),
+                  IconButton(
+                      iconSize: 20,
+                      //constraints: BoxConstraints(minHeight: 32, minWidth: 32),
+                      onPressed: () => null,
+                      //color: Colors.white70,
+                      style: IconButton.styleFrom(
+                        shape: const CircleBorder(
+                            side: BorderSide(
+                          color: Colors.white70,
+                          width: 1,
+                        )),
+                        backgroundColor: Color(0xFF3C423D),
+                      ),
+                      icon: const Icon(
+                        Icons.add,
+                        color: Colors.white70,
+                      ))
+                ],
+              )
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        actionButton(
+          text: "Add to order for " + widget.item.price.toString(),
+          width: 320,
         )
-
-        // ToggleButtons(
-        //     isSelected: List.generate(
-        //         _options.length, (index) => index == _selectedIndex),
-        //     children: [])
       ],
     );
   }

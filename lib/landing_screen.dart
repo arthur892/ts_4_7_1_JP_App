@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:ts_4_7_1_jpp_app/features/favorite_snack/screens/mainscreen.dart';
+import 'package:ts_4_7_1_jpp_app/shared/widgets.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
@@ -34,7 +36,7 @@ class LandingScreen extends StatelessWidget {
               )),
 
           // Text und Button Overlay
-          OrderCard()
+          const OrderCard()
         ],
       ),
     );
@@ -57,7 +59,7 @@ class OrderCard extends StatelessWidget {
         child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 12, sigmaY: 30),
             child: Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 //color: Colors.black.withOpacity(0.1),
                 //color: Colors.green,
@@ -84,7 +86,12 @@ class OrderCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Mainscreen()));
+                    },
 
                     // style: ElevatedButton.styleFrom(
                     //   backgroundColor:
@@ -96,35 +103,7 @@ class OrderCard extends StatelessWidget {
                     //   // ),
                     // ),
 
-                    child: Container(
-                      //height: 36,
-                      width: 180,
-                      //constraints: BoxConstraints(minWidth: 200),
-
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xFFD3B9DE)),
-                          boxShadow: [
-                            BoxShadow(
-                                color: const Color(0xFFE970C4).withOpacity(0.2),
-                                spreadRadius: 4,
-                                blurRadius: 8,
-                                offset: Offset(0, 10))
-                          ],
-                          gradient: const LinearGradient(
-                              colors: [Color(0xFFE970C4), Color(0xFFF59AA5)],
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight),
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(8)),
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Center(
-                            child: Text(
-                          "Order Now",
-                          style: TextStyle(color: Colors.white, fontSize: 16),
-                        )),
-                      ),
-                    ),
+                    child: const actionButton(text: "Order Now"),
                   ),
                 ],
               ),
