@@ -21,3 +21,10 @@ flutter:
     - assets/backgrounds/
     - assets/details/
     - assets/grafiken/
+
+  fonts:
+    - family: SF_Pro
+      fonts:
+        - asset: fonts/SF-Pro.ttf
+        - asset: fonts/SF-Pro-Display-Bold.otf
+          weight: 700
