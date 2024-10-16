@@ -1,9 +1,9 @@
 # Die Design-Challange
 
 Diese Flutter-basierte Design-Challange wurde im Rahmen einer 9 Monatigen Schulung entwickelt und dient als funktionale und optisch ansprechende Lösung zur Implemetierung eines Figma Designs in Flutter.
-## Aufgabe
+## Entwicklungsprozess
 
-
+Die App wurde innerhalb von **3 Tagen in KW 42 2024** während einer Schulung entwickelt. Als Grundlage diente eine Vorlage, die die Struktur der App vorgab.
 
 ![Aufgabe](screenshots/aufgabe.png)
 
