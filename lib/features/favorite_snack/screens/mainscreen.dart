@@ -14,7 +14,7 @@ class Mainscreen extends StatefulWidget {
   State<Mainscreen> createState() => _MainscreenState();
 }
 
-List<String> categorieNames = ["Salty", "Sweet", "Drinks", "Penis"];
+List<String> categorieNames = ["Salty", "Sweet", "Drinks", "Soft"];
 
 class _MainscreenState extends State<Mainscreen> {
   @override
@@ -51,7 +51,7 @@ class _MainscreenState extends State<Mainscreen> {
                       ),
                       SizedBox(
                         height: 36,
-                        width: 320,
+                        width: 230,
                         child: ListView.separated(
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (BuildContext context, int index) {
