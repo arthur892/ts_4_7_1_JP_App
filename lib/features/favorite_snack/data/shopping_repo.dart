@@ -7,7 +7,7 @@ class ShoppingRepo {
       name: "Moglis's Cup",
       descriptionShort: "Strawberry ice cream",
       descriptionLong:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus mi a nisl vehicula, vitae posuere libero fermentum. Nulla facilisi. Integer feugiat dui ut dolor blandit, sed tristique massa pharetra. In finibus orci a turpis.",
+          "A delightful strawberry ice cream served in a playful cup. Made from the freshest strawberries and creamy milk, this treat is perfect for kids and adults alike. Indulge in the rich, fruity flavor and smooth texture that will make you smile.",
       price: 8.99,
       likes: 200,
       stars: 4.7,
@@ -15,21 +15,21 @@ class ShoppingRepo {
       ingredients: [Icons.icecream, Icons.local_florist, Icons.spa],
     ),
     ShoppingItem(
-      name: "Angis's Yummy Burger",
-      descriptionShort: "Delish vegan Burger\nthat tastes like heaven",
+      name: "Balu's Cup",
+      descriptionShort: "Pistachio ice cream",
       descriptionLong:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet, lorem eget lacinia gravida, nisl odio egestas elit, in facilisis nulla erat vel est. Etiam tincidunt ultricies nisl nec suscipit. Fusce volutpat eros id libero.",
-      price: 13.99,
-      likes: 4112,
-      stars: 4.8,
-      path: "assets/grafiken/Burger_3D.png",
-      ingredients: [Icons.grass, Icons.eco, Icons.nature],
+          "Creamy pistachio ice cream served in a fun cup, made with roasted pistachios for a rich and nutty flavor. This classic treat offers a balance of smoothness and crunch, perfect for those who love a hint of luxury in their dessert.",
+      price: 3.49,
+      likes: 1876,
+      stars: 4.5,
+      path: "assets/grafiken/Ice.cream.png",
+      ingredients: [Icons.icecream, Icons.grass],
     ),
     ShoppingItem(
       name: "Chick Cupcakes",
       descriptionShort: "Sweet chick-shaped cupcakes",
       descriptionLong:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit feugiat elit, vel commodo justo. Fusce vitae diam quis justo cursus congue. Morbi nec libero eu odio ullamcorper condimentum. Sed at ante non metus suscipit rhoncus.",
+          "Cute chick-shaped cupcakes that are not just for Easter! These fluffy vanilla cupcakes come with a rich buttercream frosting and are sure to be a hit at any gathering. Fun for kids, but adults will love them too!",
       price: 8.49,
       likes: 2891,
       stars: 4.6,
@@ -40,7 +40,7 @@ class ShoppingRepo {
       name: "Ice Cream Stick",
       descriptionShort: "Refreshing ice cream on a stick",
       descriptionLong:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at diam dapibus, laoreet justo at, viverra dui. Maecenas pharetra facilisis orci, eu tincidunt erat ornare ac. Duis ac velit tempor, faucibus orci quis, mollis libero.",
+          "A refreshing vanilla ice cream covered in a smooth chocolate coating, served on a stick for easy enjoyment. The perfect treat to cool down on a hot day, with a satisfying crunch from the outer shell and creamy goodness inside.",
       price: 4.99,
       likes: 5120,
       stars: 4.9,
@@ -48,26 +48,26 @@ class ShoppingRepo {
       ingredients: [Icons.icecream, Icons.ac_unit, Icons.emoji_food_beverage],
     ),
     ShoppingItem(
-      name: "Ice Cream",
-      descriptionShort: "Classic ice cream in a cone",
-      descriptionLong:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit fringilla justo et dictum. Cras sagittis venenatis ipsum, id facilisis eros. Praesent at velit nibh. Integer egestas ultricies turpis, sed posuere risus consequat ac.",
-      price: 3.49,
-      likes: 1876,
-      stars: 4.5,
-      path: "assets/grafiken/Ice.cream.png",
-      ingredients: [Icons.icecream, Icons.grass],
-    ),
-    ShoppingItem(
       name: "3D Ice Cream",
       descriptionShort: "Fancy 3D ice cream treat",
       descriptionLong:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed leo a metus tincidunt rhoncus id et nisi. Nullam posuere mi quis urna sodales posuere. In et erat a metus eleifend gravida. Ut condimentum nisi at eros.",
+          "This futuristic 3D ice cream treat comes in an array of vibrant colors and shapes. Each bite offers a surprising mix of flavors and textures, making it not only delicious but also fun to eat. A must-try for adventurous dessert lovers.",
       price: 5.99,
       likes: 4203,
-      stars: 4.8,
+      stars: 2.8,
       path: "assets/grafiken/Icecream_3D.png",
       ingredients: [Icons.icecream, Icons.nature, Icons.wb_sunny],
+    ),
+    ShoppingItem(
+      name: "Angis's Yummy Burger",
+      descriptionShort: "Delish vegan burger\nthat tastes like heaven",
+      descriptionLong:
+          "This delicious vegan burger is packed with flavor. A juicy plant-based patty is topped with fresh lettuce, tomatoes, and a tangy sauce, all sandwiched between a toasted bun. You won’t believe it’s vegan!",
+      price: 13.99,
+      likes: 4112,
+      stars: 4.8,
+      path: "assets/grafiken/Burger_3D.png",
+      ingredients: [Icons.grass, Icons.eco, Icons.nature],
     ),
   ];
 

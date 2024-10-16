@@ -25,17 +25,24 @@ class RecommenedCard extends StatelessWidget {
             ],
           ),
         ),
-
-        //height: 300,
+        //height: 250,
         width: 200,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(
-                item.path,
-                fit: BoxFit.cover,
+              Center(
+                child: Container(
+                  height: 132,
+                  child: Image.asset(
+                    item.path,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
               ),
               Text(
                 item.name,
@@ -45,8 +52,10 @@ class RecommenedCard extends StatelessWidget {
                 item.descriptionShort,
                 //style: Theme.of(context).textTheme.bodyMedium
               ),
-              const SizedBox(
-                height: 12,
+              Expanded(
+                child: const SizedBox(
+                  height: 12,
+                ),
               ),
               Row(
                 children: [

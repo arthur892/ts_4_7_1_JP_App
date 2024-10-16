@@ -12,7 +12,7 @@ class PriceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      //mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const Icon(
           Icons.currency_yen_sharp,

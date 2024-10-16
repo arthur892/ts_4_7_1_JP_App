@@ -16,10 +16,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       theme: theme,
       home: Scaffold(
-        body: Center(
-          //child: Mainscreen(),
-          child: LandingScreen(),
-        ),
+        body: LandingScreen(),
       ),
     );
   }

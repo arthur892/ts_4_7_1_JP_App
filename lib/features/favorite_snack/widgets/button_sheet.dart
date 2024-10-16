@@ -30,7 +30,7 @@ class Buttonsheet extends StatelessWidget {
                     stops: [0.60, 1],
                   ),
                   shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(8)),
+                  borderRadius: BorderRadius.circular(16)),
               height: 800,
               width: 420,
               //color: Colors.black,
@@ -38,8 +38,8 @@ class Buttonsheet extends StatelessWidget {
         Positioned(
           top: 0,
           child: Container(
-            //height: 200,
-            width: 320,
+            height: 320,
+            //width: 280,
 
             //color: Colors.green,
             child: Image.asset(
@@ -48,23 +48,42 @@ class Buttonsheet extends StatelessWidget {
             ),
           ),
         ),
-
         Positioned(
-            top: 312,
+            top: 280,
             child: Column(
               children: [
                 DetailsCard(
                   item: item,
                 ),
-                SizedBox(height: 40),
+                const SizedBox(height: 80),
                 OrderCard(item: item)
               ],
             )),
-        // Positioned(
-        //     top: 600,
-        //     child: OrderCard(
-        //       item: item,
-        //     ))
+        Positioned(
+          top: 120,
+          right: 0,
+          child: IconButton(
+              iconSize: 20,
+              padding: const EdgeInsets.all(4),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              //color: Colors.white70,
+
+              style: IconButton.styleFrom(
+                minimumSize: const Size(16, 16),
+                shape: const CircleBorder(
+                    side: BorderSide(
+                  color: Colors.white70,
+                  width: 1,
+                )),
+                //backgroundColor: const Color(0xFF3C423D),
+              ),
+              icon: const Icon(
+                Icons.close,
+                color: Colors.white70,
+              )),
+        )
       ],
     );
   }
@@ -115,7 +134,20 @@ class DetailsCard extends StatelessWidget {
                   const SizedBox(
                     height: 28,
                   ),
-                  PriceWidget(item: item),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.currency_yen_sharp,
+                        color: Colors.white,
+                        size: 20,
+                      ),
+                      Text(
+                        item.price.toStringAsFixed(2),
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ],
+                  ),
                   const Divider(
                     height: 50,
                   ),
@@ -196,11 +228,12 @@ class OrderCard extends StatefulWidget {
   State<OrderCard> createState() => _OrderCardState();
 }
 
-enum Size { small, medium, large }
+enum mySize { small, medium, large }
 
 class _OrderCardState extends State<OrderCard> {
   final List<String> _options = ["Small", "Medium", "Large"];
   String _selectedSize = "Large";
+  int counter = 1;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -211,14 +244,17 @@ class _OrderCardState extends State<OrderCard> {
             children: [
               SegmentedButton(
                   style: SegmentedButton.styleFrom(
-                      backgroundColor: Color(0xFF414544),
-                      foregroundColor: Color(0xFF636366),
+                      //maximumSize: Size(50, 50),
+                      fixedSize: Size(12, 12),
+                      minimumSize: Size(12, 12),
+                      backgroundColor: const Color(0xFF414544),
+                      foregroundColor: const Color(0xFF636366),
                       //textStyle: Theme.of(context).textTheme.bodyMedium,
-                      selectedBackgroundColor: Color(0xFF636366),
+                      selectedBackgroundColor: const Color(0xFF636366),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      padding: EdgeInsets.all(0)),
+                      padding: const EdgeInsets.all(0)),
                   showSelectedIcon: false,
                   segments: <ButtonSegment<String>>[
                     ButtonSegment<String>(
@@ -247,45 +283,57 @@ class _OrderCardState extends State<OrderCard> {
                       print(_selectedSize);
                     });
                   }),
-              Expanded(child: Text("")),
+              const Expanded(child: Text("")),
               Row(
                 children: [
                   IconButton(
                       iconSize: 20,
-                      onPressed: () => null,
+                      padding: const EdgeInsets.all(4),
+                      onPressed: () => setState(() {
+                            counter == 1 ? counter = 1 : counter--;
+                          }),
                       //color: Colors.white70,
+
                       style: IconButton.styleFrom(
+                        minimumSize: const Size(16, 16),
                         shape: const CircleBorder(
                             side: BorderSide(
                           color: Colors.white70,
                           width: 1,
                         )),
-                        backgroundColor: Color(0xFF3C423D),
+                        backgroundColor: const Color(0xFF3C423D),
                       ),
                       icon: const Icon(
                         Icons.remove,
                         color: Colors.white70,
                       )),
                   Container(
-                    width: 40,
+                    width: 32,
                     child: Center(
                         child: Text(
-                      "1",
-                      style: Theme.of(context).textTheme.titleLarge,
+                      counter.toString(),
+                      style: const TextStyle(
+                          color: Colors.white70,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
                     )),
                   ),
                   IconButton(
                       iconSize: 20,
+                      padding: const EdgeInsets.all(4),
                       //constraints: BoxConstraints(minHeight: 32, minWidth: 32),
-                      onPressed: () => null,
+                      onPressed: () => setState(() {
+                            counter++;
+                          }),
                       //color: Colors.white70,
                       style: IconButton.styleFrom(
+                        minimumSize: const Size(16, 16),
                         shape: const CircleBorder(
                             side: BorderSide(
                           color: Colors.white70,
                           width: 1,
                         )),
-                        backgroundColor: Color(0xFF3C423D),
+                        backgroundColor: const Color(0xFF3C423D),
                       ),
                       icon: const Icon(
                         Icons.add,
@@ -299,9 +347,47 @@ class _OrderCardState extends State<OrderCard> {
         const SizedBox(
           height: 20,
         ),
-        actionButton(
-          text: "Add to order for " + widget.item.price.toString(),
+        Container(
+          //height: 36,
           width: 320,
+          //constraints: BoxConstraints(minWidth: 200),
+
+          decoration: BoxDecoration(
+              border: Border.all(color: const Color(0xFFD3B9DE)),
+              boxShadow: [
+                BoxShadow(
+                    color: const Color(0xFFE970C4).withOpacity(0.2),
+                    spreadRadius: 4,
+                    blurRadius: 8,
+                    offset: const Offset(0, 10))
+              ],
+              gradient: const LinearGradient(
+                  colors: [Color(0xFFE970C4), Color(0xFFF59AA5)],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight),
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(8)),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Add to order for",
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+                const Icon(
+                  Icons.currency_yen_sharp,
+                  color: Colors.white,
+                  size: 20,
+                ),
+                Text(
+                  widget.item.price.toStringAsFixed(2),
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+              ],
+            ),
+          ),
         )
       ],
     );
